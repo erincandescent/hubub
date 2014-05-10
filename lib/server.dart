@@ -87,6 +87,8 @@ void startServer(Map config) {
               
               DateTime now = new DateTime.now();
               Duration timeSinceLast = now.difference(lastActivityTime);
+              lastActivityTime = now;
+              
               if(meanTimeBetweenActivities == null) {
                 meanTimeBetweenActivities = timeSinceLast;
               } else {
