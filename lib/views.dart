@@ -8,6 +8,7 @@ import 'package:shelf_route/shelf_route.dart';
 import 'package:shelf_static/shelf_static.dart' as static;
 import 'package:shelf_exception_response/exception_response.dart';
 import 'package:page_templates/server.dart';
+import 'server.dart';
 
 var _t = new TemplateLibrary("hubub");
 
@@ -86,6 +87,9 @@ _home(Request req) {
       sort: {"published": -1}).toList();
   }).then((activities) {
     context["activities"] = activities;
+    var haveTime = meanTimeBetweenActivities != null;
+    context["haveTime"]   = haveTime;
+    if(haveTime) context["time"] = meanTimeBetweenActivities.inSeconds;
       
     return template.evaluate(context).then((doc) {
       return new Response.ok(doc.outerHtml, headers: {

@@ -26,6 +26,9 @@ Handler _convertException(Handler h) {
   };
 }
 
+DateTime lastActivityTime          = new DateTime.now();
+Duration meanTimeBetweenActivities = null;
+
 void startServer(Map config) {
   _l.info("Starting...");
   alchemy.processDocumentAnnotations();
@@ -81,6 +84,15 @@ void startServer(Map config) {
               _l.info(
                   "PuSHed activity ${activity['id']} not spam with probability ${result['probability']}"
                   );
+              
+              DateTime now = new DateTime.now();
+              Duration timeSinceLast = now.difference(lastActivityTime);
+              if(meanTimeBetweenActivities == null) {
+                meanTimeBetweenActivities = timeSinceLast;
+              } else {
+                meanTimeBetweenActivities = (meanTimeBetweenActivities * 0.9) + (timeSinceLast * 0.1);
+              }
+                  
               alchemy.importDocument(models.Activity, activity).then((_) {
                 return alchemy.Connection.current.saveAll();
               });
