@@ -1,0 +1,16 @@
+# Listening IP address. Recomend you limit this to localhost because Dart will
+# interpret certain proxy headers in order to build the request URI.
+listen:
+  address: "::0"
+  port: 8080
+
+# The name the server will use to refer to itself  
+serverName: "http://example.com/"
+
+# Connection string for the database.
+database: "mongodb://127.0.0.1:27017/hubub"
+
+# Smapicity keys. Grab them from spamicity.info.
+spamicity:
+  key: "key"
+  secret: "secret"

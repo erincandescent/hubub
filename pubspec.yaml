@@ -1,0 +1,21 @@
+name: hubub
+version: 0.1.0
+author: Owen Shepherd <*@owenshepherd.net>
+description: What's happening on Pump.io?
+homepage: https://github.com/oshepherd/hubub
+dependencies:
+  alchemy: '>=0.1.0 <0.2.0'
+  args: '>=0.10.0 <0.11.0'
+  hubsubbable: '>=0.1.0 <0.2.0'
+  oauth: '>=0.2.0 <0.3.0'
+  page_templates:
+    git: https://github.com/oshepherd/page_templates.dart.git
+  plumbing:
+    git: https://github.com/oshepherd/plumbing.dart.git
+  shelf: '>=0.5.1+1 <0.6.0'
+  shelf_alchemy: '>=0.1.0 <0.6.0'
+  shelf_exception_response: '>=0.1.0 <0.2.0'
+  shelf_static:
+    git: https://github.com/oshepherd/shelf_static.dart.git
+    version: '>=0.1.0+1 <0.2.0'
+  yaml: '>=0.9.0 <0.10.0'
