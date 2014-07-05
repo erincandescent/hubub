@@ -22,7 +22,7 @@ class Activity {
   Map get object => _get(raw, "object", {});
   
   Map get author => _getd(object, "author", () => actor);
-  String get avatar => _get(_get(author, "image", {}), "url", "/packages/hubub/noavavar.png");
+  String get avatar => _get(_get(author, "image", {}), "url", "/packages/hubub/noavatar.png");
   String get authorName => _getd(author, "displayName", () => _get(author, "preferredUsername", ""));
   
   String get title     => object["displayName"];
