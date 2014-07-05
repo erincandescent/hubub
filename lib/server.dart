@@ -63,7 +63,7 @@ void startServer(Map config) {
 
   shelf_io.serve(pipeline, address, port).then((server) {
     _l.info("Serving on http://${server.address.host}:${server.port}");
-  }).then((_) {/*
+  }).then((_) {
     subEndpoint.subscribe(Uri.parse("https://ofirehose.com/feed.json"), 
         Uri.parse("https://ofirehose.com/hub")).listen((data) {
       shelf_alchemy.runWithConnection(() {
@@ -103,6 +103,6 @@ void startServer(Map config) {
           });
         });
       });
-    });*/
+    });
   });
 }
