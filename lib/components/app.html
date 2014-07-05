@@ -1,0 +1,28 @@
+<link rel="import" href="../../../packages/polymer/polymer.html">
+<link rel="import" href="../../../packages/core_elements/core_toolbar.html">
+<link rel="import" href="../../../packages/core_elements/core_menu_button.html">
+<link rel="import" href="../../../packages/core_elements/core_icon_button.html">
+<link rel="import" href="../../../packages/core_elements/core_item.html">
+<link rel="import" href="stream.html">
+<!--<link rel="import" href="login.html">-->
+<polymer-element name="hubub-app">
+  <template>
+    <style>
+      core-toolbar {
+        background: #4285f4;
+        color: #f1f1f1;
+        fill: #f1f1f1;
+      }
+    </style>
+    <core-toolbar>
+      <span flex>Hubub</span>
+      <!--<core-icon-button icon='{{lock_open}}' on-tap="{{signIn}}"></core-icon-button>
+      <core-menu-button icon="{{more_vert}}" halign="right">
+        <core-item icon="{{lock_open}}" label="Sign in" on-tap="{{signIn}}"></core-item>
+      </core-menu-button>-->
+    </core-toolbar>
+    <hubub-stream></hubub-stream>
+    <!--<hubub-login id="login"></hubub-login>-->
+  </template>
+  <script type="application/dart" src="app.dart"></script>
+</polymer-element>

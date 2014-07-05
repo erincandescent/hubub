@@ -1,0 +1,45 @@
+<link rel="import" href="../../../packages/polymer/polymer.html"> 
+<polymer-element name="hubub-pager" attributes="page">
+  <template>
+    <style>
+    :host {
+      min-height: 32px;
+      margin: 8px;
+    }
+    
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    li {
+      display: inline;
+      background-color: #eee;
+      
+      cursor: pointer;
+      
+      padding: 8px;
+    }
+    
+    li[selected] {
+      background-color: #ddd;
+      font-weight: bold;
+    }
+    
+    li[first] {
+      border-radius: 4px 0 0 4px;
+    }
+    
+    li[last] {
+      border-radius: 0 4px 4px 0;
+    }
+    </style>
+    <ul>
+      <template repeat="{{p in pages}}">
+        <li first?="{{p.first}}" last?="{{p.last}}" number="{{p.number}}" selected?="{{p.selected}}" on-tap="{{clickPage}}">{{p.number]}}</li>
+      </template>
+    </ul>
+  </template>
+  <script type="application/dart" src="pager.dart"></script>
+</polymer-element>

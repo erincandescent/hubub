@@ -1,0 +1,117 @@
+<link rel="import" href="../../../packages/polymer/polymer.html">
+<link rel="import" href="../../../packages/paper_elements/paper_icon_button.html">
+<link rel="import" href="avatar.html">
+<polymer-element name="hubub-object" attributes="activity">
+  <template>
+    <style>
+      :host {
+        display: block;
+        width: 768px;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+        border-bottom-left-radius: 2px;
+        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+        margin: 20px auto;
+        font-size: 20px;
+        position: relative;
+        background-color: rgb(255, 255, 255);
+      }
+      
+      header {
+        display: table;
+        border-bottom: 2px solid #eee;
+        font-size: 80%;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        height: 48px;
+        width: 100%;
+      }
+      
+      header > span {
+        display: table-cell;
+        padding-left: 64px;
+        vertical-align: middle;
+        line-height: 120%;
+      }
+      
+      span[title] {
+        font-weight: bold;
+      }
+      
+      nav {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        padding: 8px;
+      }
+      
+      hubub-avatar {
+        position: absolute;
+        left: 8px;
+        top: 8px;
+      }
+      
+      #image {
+        width: 100%;
+        background-position: center center;
+        background-size: cover;
+        border-bottom: 2px solid #eee;
+      }
+      
+      #image img {
+        width: 100%;
+        max-height: 300px;
+        opacity: 0;
+        filter: alpha(opacity=0);
+      }
+      
+      #body {
+        padding: 8px;
+        font-size: 70%;
+      }
+      
+      #body img {
+        max-width: 100%;
+      }
+      
+      footer {
+        border-top: 2px solid #eee;
+        font-size: 70%;
+        padding: 8px;
+        color: #777;
+        line-height: 100%;
+      }
+    </style> 
+    <hubub-avatar src="{{v.avatar}}" href="{{v.authorUrl}}#"></hubub-avatar>
+    <header><span>
+        <template if="{{v.title}}"><span title>{{v.title}}</span><br></template>
+        {{v.authorName}} <i><a href="{{v.objectUrl}}">{{v.time}}</a></i>
+    </span></header>
+    <nav>
+      <!--<paper-icon-button icon="send"></paper-icon-button>-->
+    </nav>
+    <template if="{{v.image}}">
+      <div id="image" style="background-image: url('{{v.image}}')">
+        <a href="{{v.objectUrl}}#"><img src="{{v.image}}"></a>
+      </div>
+    </template>
+    <div id="body"></div> 
+    <footer>
+      <template if="{{v.to.isNotEmpty}}">
+        To:
+        <template repeat="{{recipient in v.to}}">
+          <a href="{{recipient['url']}}">{{recipient['displayName']}}</a>
+        </template>
+      </template>
+      
+      <template if="{{v.cc.isNotEmpty}}">
+        Cc:
+        <template repeat="{{recipient in v.cc}}">
+          <a href="{{recipient['url']}}">{{recipient['displayName']}}</a>
+        </template>
+      </template>
+    </footer>
+  </template>
+  <script type="application/dart" src="object.dart"></script>
+</polymer-element> 

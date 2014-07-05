@@ -1,0 +1,19 @@
+<link rel="import" href="../../../packages/polymer/polymer.html">
+<link rel="import" href="avatar.html"> 
+<link rel="import" href="object.html"> 
+<link rel="import" href="pager.html"> 
+<link rel="import" href="throbber.html"> 
+<polymer-element name="hubub-stream">
+  <template>
+    <div layout vertical center>
+      <template if="{{posts.isNotEmpty}}" repeat="{{post in posts}}">
+        <hubub-object activity="{{post}}"></hubub-object>
+      </template>
+      <template if="{{posts.isEmpty}}">
+        <hubub-throbber></hubub-throbber>
+      </template>
+      <hubub-pager page="{{page}}"></hubub-pager>
+    </div>
+  </template>
+  <script type="application/dart" src="stream.dart"></script>
+</polymer-element> 

@@ -1,0 +1,34 @@
+<link rel="import" href="../../../packages/polymer/polymer.html">
+<link rel="import" href="../../../packages/core_elements/core_pages.html">
+<link rel="import" href="../../../packages/paper_elements/paper_dialog_transition.html">
+<link rel="import" href="../../../packages/paper_elements/paper_dialog.html">
+<link rel="import" href="../../../packages/paper_elements/paper_input.html">
+<link rel="import" href="../../../packages/paper_elements/paper_fab.html">
+<polymer-element name="hubub-login" attributes="opened">
+  <template>
+    <style>
+      paper-fab {
+        float: right;
+      }
+      
+      #modal {
+        padding: 0;
+      }
+      
+      iframe {
+        width: 500px;
+        height: 500px;
+      }
+    </style>
+    <paper-dialog id='loginDia' heading="Login" transition="paper-dialog-transition-bottom"
+      opened="{{opened}}">
+      <paper-input id="id" label="ID"></paper-input>
+      <paper-fab icon="{{arrow_forward}}" on-tap="{{doLogin}}"></paper-fab><br>
+      <span id="error" style="color: #f00;"></span>
+    </paper-dialog>
+    <paper-dialog id='waitDia' transition="paper-dialog-transition-bottom">
+      Communicating with your server...
+    </paper-dialog>
+  </template>
+  <script type="application/dart" src="login.dart"></script>
+</polymer-element>

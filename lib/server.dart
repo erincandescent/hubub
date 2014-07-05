@@ -14,6 +14,8 @@ import 'package:shelf_exception_response/exception_response.dart' as er;
 import 'views.dart';
 import 'src/utils.dart';
 
+bool developerMode = false;
+
 var _l = new Logger("Hubub");
 oauth.Client spamClient;
 
@@ -34,9 +36,8 @@ void startServer(Map config) {
   alchemy.processDocumentAnnotations();
   Uri serverName = Uri.parse(config["serverName"]);
 
-  // Error formatter
-  //formatter.registerFormatter("html", "text/html", _htmlErrorFormatter);
-
+  developerMode = config.containsKey("developerMode");
+  
   // PuSH endpoint
   var subEndpoint = new hubsub.SubscriptionEndpoint(serverName, "/sub");
 
@@ -62,7 +63,7 @@ void startServer(Map config) {
 
   shelf_io.serve(pipeline, address, port).then((server) {
     _l.info("Serving on http://${server.address.host}:${server.port}");
-  }).then((_) {
+  }).then((_) {/*
     subEndpoint.subscribe(Uri.parse("https://ofirehose.com/feed.json"), 
         Uri.parse("https://ofirehose.com/hub")).listen((data) {
       shelf_alchemy.runWithConnection(() {
@@ -102,6 +103,6 @@ void startServer(Map config) {
           });
         });
       });
-    });
+    });*/
   });
 }
